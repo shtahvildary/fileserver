@@ -8,25 +8,44 @@ http.createServer(function (req, res) {
   console.log(`${req.method} ${req.url}`);
   // parse URL
   const parsedUrl = url.parse(req.url);
+  var folder;
+  var fileIndex=req.url;
+  fileIndex=fileIndex.slice(fileIndex.lastIndexOf(".")+1)
   // extract URL path
-  let pathname = `.${parsedUrl.pathname}`;
+  // let pathname = __dirname + "/files/videos" +parsedUrl.pathname;
+  // let pathname = __dirname + "/files/photos" +parsedUrl.pathname;
+
+  // let pathname = `.${parsedUrl.pathname}`;
+
   // maps file extention to MIME types
   const mimeType = {
     '.ico': 'image/x-icon',
-    '.html': 'text/html',
-    '.js': 'text/javascript',
-    '.json': 'application/json',
-    '.css': 'text/css',
     '.png': 'image/png',
     '.jpg': 'image/jpeg',
+    
     '.wav': 'audio/wav',
     '.mp3': 'audio/mpeg',
-    '.svg': 'image/svg+xml',
+    
     '.pdf': 'application/pdf',
     '.doc': 'application/msword',
-    '.eot': 'appliaction/vnd.ms-fontobject',
-    '.ttf': 'aplication/font-sfnt'
+    
+    '.ogg':'video/ogg',
+    '.mp4':'video/mp4'
   };
+  if(fileIndex==('jpg'||'png'||'.ico')){
+    folder='photos';
+  }
+  if(fileIndex==('mp4'||'ogg')){
+    folder='videos';
+  }
+  if(fileIndex==('mp3'||'wav')){
+    folder='musics';
+  }
+  if(fileIndex==('pdf'||'doc')){
+    folder='documents';
+  }
+  let pathname = __dirname + "/files/"+folder +parsedUrl.pathname;
+  
   fs.exists(pathname, function (exist) {
     if(!exist) {
       // if the file is not found, return 404
@@ -34,10 +53,10 @@ http.createServer(function (req, res) {
       res.end(`File ${pathname} not found!`);
       return;
     }
-    // if is a directory, then look for index.html
-    if (fs.statSync(pathname).isDirectory()) {
-      pathname += '/index.html';
-    }
+    // // if is a directory, then look for index.html
+    // if (fs.statSync(pathname).isDirectory()) {
+    //   pathname += '/index.html';
+    // }
     // read file from file system
     fs.readFile(pathname, function(err, data){
       if(err){
