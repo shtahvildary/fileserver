@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+*.pdf
+*.mp3
+*.jpg
+*.mp4
+files/voice/file_20
+*.ogg

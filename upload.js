@@ -32,12 +32,25 @@ app.post('/upload', function (req, res) {
     } = req.body;
 
     //https://api.telegram.org/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/videos/file_19.mp4
-    
+
     //export path to store from telegram link
     var filePath = url.parse(link).pathname;
     //this step filePath is >> /file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/<our_path> and we want <our_path>
+
+    //shmt_bot
+    // var botToken = "449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk";
     filePath = filePath.replace("/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/", "");
-    //create a stream to write file on our storage
+    
+    //iribnews
+    // var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
+    filePath = filePath.replace("/file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/", "");
+
+    // //Solving index problem for ogg files
+    // if (!filePath.includes('.')) {
+    //     filePath += ".ogg";
+    // }
+
+    //create a stream to write file on our storage    
     var file = fs.createWriteStream("./files/" + filePath);
     //get file
     var request = https.get(link, function (response) {

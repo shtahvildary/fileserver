@@ -33,19 +33,9 @@ http.createServer(function (req, res) {
     '.ogg':'video/ogg',
     '.mp4':'video/mp4'
   };
-  if(fileIndex==('jpg'||'png'||'.ico')){
-    folder='photos';
-  }
-  if(fileIndex==('mp4'||'ogg')){
-    folder='videos';
-  }
-  if(fileIndex==('mp3'||'wav')){
-    folder='musics';
-  }
-  if(fileIndex==('pdf'||'doc')){
-    folder='documents';
-  }
-  let pathname = __dirname + "/files/"+folder +parsedUrl.pathname;
+  
+  let pathname = "./files" +parsedUrl.pathname;
+  // let pathname = __dirname + "/files" +parsedUrl.pathname;
   
   fs.exists(pathname, function (exist) {
     if(!exist) {
