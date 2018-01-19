@@ -38,11 +38,11 @@ app.post('/upload', function (req, res) {
     //this step filePath is >> /file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/<our_path> and we want <our_path>
 
     //shmt_bot
-    // var botToken = "449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk";
-    filePath = filePath.replace("/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/", "");
+    // //var botToken = "449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk";
+    // filePath = filePath.replace("/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/", "");
     
     //iribnews
-    // var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
+    //// var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
     filePath = filePath.replace("/file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/", "");
 
     // //Solving index problem for ogg files
