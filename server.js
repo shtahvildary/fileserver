@@ -2,6 +2,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
+require('./upload')
 // you can pass the parameter in the command line. e.g. node static_server.js 3000
 const port = process.argv[2] || 9000;
 http.createServer(function (req, res) {
@@ -72,4 +73,4 @@ http.createServer(function (req, res) {
     });
   });
 }).listen(parseInt(port));
-console.log(`Server listening on port ${port}`);
+console.log(`Download Server listening on port ${port}`);
