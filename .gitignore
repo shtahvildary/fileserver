@@ -63,3 +63,4 @@ typings/
 *.mp4
 files/voice/file_20
 *.ogg
+*.json
