@@ -37,6 +37,11 @@ app.post('/upload', function (req, res) {
     var filePath = url.parse(link).pathname;
     //this step filePath is >> /file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/<our_path> and we want <our_path>
 
+    //admin it-word cloud
+    // var bot = botgram("456299862:AAGB1q_AMolsLpeE5EARolW4FHEi5-1kqjE");
+    // filePath = filePath.replace("/file/bot456299862:AAGB1q_AMolsLpeE5EARolW4FHEi5-1kqjE/", "");
+    
+
     //shmt_bot
     // //var botToken = "449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk";
     // filePath = filePath.replace("/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/", "");
