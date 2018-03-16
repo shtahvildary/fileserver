@@ -34,7 +34,7 @@ http.createServer(function (req, res) {
     '.mp4':'video/mp4'
   };
   
-  let pathname = "./files" +parsedUrl.pathname;
+  let pathname = "./file" +parsedUrl.pathname;
   // let pathname = __dirname + "/files" +parsedUrl.pathname;
   
   fs.exists(pathname, function (exist) {

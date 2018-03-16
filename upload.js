@@ -53,10 +53,13 @@ app.post("/upload", function(req, res) {
 
   //iribnews
   //// var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
-  filePath = filePath.replace(
-    "/file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/",
-    ""
-  );
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // filePath = filePath.replace(
+  //   "/file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/",
+  //   ""
+  // );
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // //Solving index problem for ogg files
   // if (!filePath.includes('.')) {
@@ -64,16 +67,18 @@ app.post("/upload", function(req, res) {
   // }
 
   var subfolder = filePath.substring(0, filePath.lastIndexOf("/"));
-  var dir = "./files/" + subfolder;
+  // var dir = "./files/" + subfolder;
+  var dir =  "."+subfolder;
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
   //create a stream to write file on our storage
-  var file = fs.createWriteStream("./files/" + filePath);
+  var file = fs.createWriteStream( "."+filePath);
   //get file
   var request = https.get(link, function(response) {
     //store it with created write stream
     response.pipe(file);
+    return res.status(200).json({filePath:filePath.replace("/file/","")})
   });
 
   //DONE :)
