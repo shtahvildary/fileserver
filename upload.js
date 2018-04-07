@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.post("/upload", function(req, res) {
   //check clientid
   if (req.headers["clientid"] != "123")
-    res.status(401).json({
+    return res.status(401).json({
       error: "clientid is wrong."
     });
   //it's like >> var link=req.body.link;
@@ -110,7 +110,7 @@ app.post("/upload/http", function(req, res) {
   //iribnews
   //// var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
   filePath = filePath.replace(
-    "/file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/",
+    "file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/",
     ""
   );
 
@@ -119,13 +119,13 @@ app.post("/upload/http", function(req, res) {
   //     filePath += ".ogg";
   // }
 
-  var subfolder = filePath.substring(0, filePath.lastIndexOf("/"));
-  var dir = "./files/" + subfolder;
+  var subfolder = filePath.substring(1, filePath.lastIndexOf("/"));
+  var dir = "./file/" + subfolder;
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
   //create a stream to write file on our storage
-  var file = fs.createWriteStream("./files/" + filePath);
+  var file = fs.createWriteStream("./file/" + filePath);
   console.log(link)
   //get file
   var request = http.get(link, function(response) {
