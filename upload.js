@@ -35,7 +35,7 @@ app.post("/upload", function(req, res) {
       error: "clientid is wrong."
     });
   //it's like >> var link=req.body.link;
-  var { link } = req.body;
+  var { link,departmentId } = req.body;
 
   //https://api.telegram.org/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/videos/file_19.mp4
 
@@ -67,18 +67,23 @@ app.post("/upload", function(req, res) {
   // }
 
   var subfolder = filePath.substring(0, filePath.lastIndexOf("/"));
-  // var dir = "./files/" + subfolder;
-  var dir =  "."+subfolder;
-  if (!fs.existsSync(dir)) {
+  subfolder=subfolder.substring(subfolder.lastIndexOf("/"))
+  var dir =  "./file/"+departmentId;
+  if (!fs.existsSync(dir)) 
     fs.mkdirSync(dir);
-  }
+  
+    dir=dir+subfolder
+  if (!fs.existsSync(dir)) 
+    fs.mkdirSync(dir);
+    var savePath=dir+"/"+filePath.substring(filePath.lastIndexOf("/")+1)
+  
   //create a stream to write file on our storage
-  var file = fs.createWriteStream( "."+filePath);
+  var file = fs.createWriteStream(savePath );
   //get file
   var request = https.get(link, function(response) {
     //store it with created write stream
     response.pipe(file);
-    return res.status(200).json({filePath:filePath.replace("/file/","")})
+    return res.status(200).json({filePath:savePath.replace("./file/","")})
   });
 
   //DONE :)
