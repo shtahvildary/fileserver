@@ -43,16 +43,7 @@ app.post("/upload", function(req, res) {
   var filePath = url.parse(link).pathname;
   //this step filePath is >> /file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/<our_path> and we want <our_path>
 
-  //admin it-word cloud
-  // var bot = botgram("456299862:AAGB1q_AMolsLpeE5EARolW4FHEi5-1kqjE");
-  // filePath = filePath.replace("/file/bot456299862:AAGB1q_AMolsLpeE5EARolW4FHEi5-1kqjE/", "");
-
-  //shmt_bot
-  // //var botToken = "449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk";
-  // filePath = filePath.replace("/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/", "");
-
-  //iribnews
-  //// var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
+  
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // filePath = filePath.replace(
@@ -98,26 +89,15 @@ app.post("/upload/http", function(req, res) {
   //it's like >> var link=req.body.link;
   var { link } = req.body;
 
-  //https://api.telegram.org/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/videos/file_19.mp4
 
   //export path to store from telegram link
   var filePath = url.parse(link).pathname;
-  //this step filePath is >> /file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/<our_path> and we want <our_path>
 
-  //admin it-word cloud
-  // var bot = botgram("456299862:AAGB1q_AMolsLpeE5EARolW4FHEi5-1kqjE");
-  // filePath = filePath.replace("/file/bot456299862:AAGB1q_AMolsLpeE5EARolW4FHEi5-1kqjE/", "");
-
-  //shmt_bot
-  // //var botToken = "449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk";
-  // filePath = filePath.replace("/file/bot449968526:AAGY4Tz48MiN8uxUD_0nWHFZSQscD9OQ_Vk/", "");
-
-  //iribnews
-  //// var botToken = "545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4";
-  filePath = filePath.replace(
-    "file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/",
-    ""
-  );
+ 
+  // filePath = filePath.replace(
+  //   "file/bot545443179:AAGEKFAT_mg5H2aTZbCKEPXr2Pkee11b8l4/",
+  //   ""
+  // );
 
   // //Solving index problem for ogg files
   // if (!filePath.includes('.')) {
